@@ -19,14 +19,30 @@ public class Technician {
     private int technicianID;
 
     @Column(name="FirstName",nullable = false)
-    @Size(max = 100,message = "Solo se soportan 100 caractéres")
+    @Size(min=3,max = 100,message = "Solo se soportan de 3 a 100 caractéres")
     @NotBlank
     private String firstName;
 
     @Column(name="LastName",nullable = false)
-    @Size(max = 100,message = "Solo se soportan 100 caractéres")
+    @Size(min=3,max = 100,message = "Solo se soportan de 3 a 100 caractéres")
     @NotBlank
     private String lastName;
+
+    @Column(name="Dni",nullable = false)
+    @Size(min = 8, max = 8,message = "El DNI debe ser de 8 caracateres")
+    @NotBlank
+    private String dni;
+
+    @Column(name="Phone",nullable = false)
+    @Size(min=9, max = 9,message = "Solo se soportan 9 caractéres")
+    @NotBlank
+    private String phone;
+
+    @Column(name="Age",nullable = false)
+    @Digits(integer = 3,fraction = 0)
+    @Positive(message = "La edad debe ser positiva")
+    @Max(value = 100,message = "La edad máxima es 100 años")
+    private int age;
 
 
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments/navbar.html :: header( title = 'Técnicos')}"></head>
+    <body>
+        <main>
+            <div class="container px-4 pb-5">
+                <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Technician')}"></nav>
+                <h1 class="pb-2 border-bottom">Lista Técnicos</h1>
+                <a class="btn btn-primary mt-4 mb-4" th:href="@{'/technician/new'}">Nuevo Técnico</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>DNI</th>
+                            <th>Teléfono</th>
+                            <th>Edad</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="tech, info : ${listaTecnicos}">
+                            <td th:text="${info.index + 1}"></td>
+                            <td th:text="${tech.getFirstName()}"></td>
+                            <td th:text="${tech.getLastName()}"></td>
+                            <td th:text="${tech.getDni()}"></td>
+                            <td th:text="${tech.getPhone()}"></td>
+                            <td th:text="${tech.getAge()}"></td>
+                            <td><a class="btn btn-primary"
+                                   th:href="@{'/technician/edit' + '?id=' + ${tech.getTechnicianID()}}">Editar</a>
+                            </td>
+                            <td><a class="btn btn-danger"
+                                   th:href="@{'/technician/delete' + '?id=' + ${tech.getTechnicianID()}}">Borrar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <script th:replace="~{fragments/navbar.html :: footer-bootstrap}"></script>
+    </body>
+</html>
