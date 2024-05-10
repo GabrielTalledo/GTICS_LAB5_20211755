@@ -67,7 +67,12 @@ public class TechinicianController {
     @GetMapping("/delete")
     public String borrarTecnico(@RequestParam("id") int id,
                                       RedirectAttributes attr) {
+        Optional<Technician> optTech = technicianRepository.findById(id);
 
-        return "";
+        if (optTech.isPresent()) {
+            technicianRepository.deleteById(id);
+            attr.addFlashAttribute("msg", "Técnico borrado exitosamente");
+        }
+        return "redirect:/technician";
     }
 }
