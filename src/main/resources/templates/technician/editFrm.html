@@ -10,7 +10,7 @@
                     <hr/>
                     <div class="alert alert-success" role="alert" th:if="${msg != null}" th:text="${msg}">
                     </div>
-                    <form method="post" th:action="@{'/techinician/save'}" th:object="${tecnico}">
+                    <form method="post" th:action="@{'/technician/save'}" th:object="${tecnico}">
                         <input th:field="*{technicianID}" type="hidden"/>
                         <div class="mb-3">
                             <label class="form-label">Nombre del Técnico</label>
