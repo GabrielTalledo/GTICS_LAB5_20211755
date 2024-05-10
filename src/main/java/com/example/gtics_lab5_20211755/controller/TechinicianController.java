@@ -52,9 +52,9 @@ public class TechinicianController {
         if (!bindingResult.hasErrors()) {
 
             if (tecnico.getTechnicianID() == 0) {
-                attr.addFlashAttribute("msg", "Técnico" + tecnico.getFirstName() + " " + tecnico.getLastName() + " creado exitosamente");
+                attr.addFlashAttribute("msg", "Técnico " + tecnico.getFirstName() + " " + tecnico.getLastName() + " creado exitosamente");
             } else {
-                attr.addFlashAttribute("msg", "Técnico" + tecnico.getFirstName() + " " + tecnico.getLastName() + " actualizado exitosamente");
+                attr.addFlashAttribute("msg", "Técnico " + tecnico.getFirstName() + " " + tecnico.getLastName() + " actualizado exitosamente");
             }
             technicianRepository.save(tecnico);
             return "redirect:/technician";
@@ -62,5 +62,12 @@ public class TechinicianController {
         } else { //Error
             return "technician/editFrm";
         }
+    }
+
+    @GetMapping("/delete")
+    public String borrarTecnico(@RequestParam("id") int id,
+                                      RedirectAttributes attr) {
+
+        return "";
     }
 }
